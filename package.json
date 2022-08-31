@@ -1,0 +1,92 @@
+{
+	"dependencies": {
+		"electron-updater": "^5.2.1",
+		"yt-dlp-wrap": "^2.3.11",
+		"yt-dlp-wrap-extended": "^2.3.12"
+	},
+	"name": "ytdownloader",
+	"version": "3.1.0",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron .",
+		"watch": "nodemon --exec electron .",
+		"dist": "electron-builder",
+		"debug": "electron --inspect=5858 .",
+		"windows": "./windows.sh && electron-builder -w",
+		"linux": "./linux.sh && electron-builder -l",
+		"publish-linux": "./linux.sh && electron-builder -l --publish=always",
+		"publish-windows": "./windows.sh && electron-builder -w --publish=always"
+	},
+	"author": {
+		"name": "Andrew",
+		"email": "aandrew.me@pm.me"
+	},
+	"publish": {
+		"provider": "github",
+		"owner": "aandrew-me",
+		"repo": "ytDownloader",
+		"private": false
+	},
+	"license": "MIT",
+	"description": "Download videos and audios from YouTube",
+	"devDependencies": {
+		"electron": "20.0.3",
+		"electron-builder": "^23.3.3"
+	},
+	"build": {
+		"productName": "YTDownloader",
+		"appId": "org.andrew.ytdownloader",
+		"artifactName": "${productName}.${ext}",
+		"files": [
+			"./resources/**/*",
+			"*.js",
+			"./html/**/*",
+			"./resources/**/*",
+			"./public/**/*",
+			"package.json",
+			"./assets/**/*",
+			"./src/**/*"
+		],
+		"mac": {
+			"category": "Utility",
+			"target": [
+				"dmg"
+			]
+		},
+		"dmg": {
+			"contents": [
+				{
+					"x": 130,
+					"y": 220
+				},
+				{
+					"x": 410,
+					"y": 220,
+					"type": "link",
+					"path": "/Applications"
+				}
+			],
+			"sign": false
+		},
+		"asar": false,
+		"directories": {
+			"buildResources": "resources",
+			"output": "release"
+		},
+		"linux": {
+			"target": [
+				"Appimage",
+				"deb",
+				"snap"
+			],
+			"category": "Utility"
+		},
+		"win": {
+			"target": "nsis"
+		},
+		"nsis": {
+			"allowToChangeInstallationDirectory": true,
+			"oneClick": false
+		}
+	}
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferences</title>
+    <link rel="stylesheet" href="../assets/css/extra.css">
+</head>
+<body>
+    <a id="back">Home</a>
+    <h1>Preferences</h1>
+    <p>1. Download location</p>
+    <p>Default location: <span id="path"></span></p>
+    <button id="selectLocation">Select Download Location</button>
+
+    <p id="msg"></pid>
+
+    <p>2. Enable transparent dark (only Linux, needs restart) <input type="checkbox" id="enableTransparent"></p>
+
+    <script>
+        let downloadPath = localStorage.getItem("downloadPath")
+        getId("path").textContent = downloadPath
+
+
+        const { ipcRenderer, dialog } = require("electron")
+        function getId(id){
+            return document.getElementById(id)
+        }
+
+        getId("back").addEventListener("click", ()=>{
+            ipcRenderer.send("close-secondary")
+        })
+
+        getId("selectLocation").addEventListener("click", ()=>{
+            ipcRenderer.send("select-location", "")
+        })
+
+        ipcRenderer.on("downloadPath", (event, downloadPath)=>{
+            console.log(downloadPath);
+            localStorage.setItem("downloadPath", downloadPath)
+            getId("path").textContent = downloadPath
+        })
+
+        const enabledTransparent = getId("enableTransparent")
+        enabledTransparent.addEventListener("change", (event)=>{
+            if (enabledTransparent.checked){
+                localStorage.setItem("enabledTransparent", "true")
+            }
+            else{
+                localStorage.setItem("enabledTransparent", "false")
+            }
+        })
+
+        const localEnabledTransparent = localStorage.getItem("enabledTransparent")
+        if (localEnabledTransparent == "true"){
+            enabledTransparent.checked = true
+        }
+    </script>
+</body>
+</html>

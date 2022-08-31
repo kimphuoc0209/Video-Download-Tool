@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="../assets/css/extra.css">
+
+</head>
+
+<body>
+    <a id="back">Home</a>
+    <h1>ytDownloader</h1>
+
+    <p>ytDownloader lets you download videos (and sometimes audios) from hundreds of sites like Youtube, Facebook, Instagram, Tiktok, Twitter and so on.
+    </p>
+
+    <p>It's a Free and Open Source app built on top of Node.js and Electron. yt-dlp has been used for downloading</p>
+
+    <p>Source Code is available <a id="sourceLink">here</a></p>
+
+    <script>
+        const { ipcRenderer, shell } = require("electron")
+
+        document.getElementById("back").addEventListener("click", ()=>{
+            ipcRenderer.send("close-secondary")        })
+        document.getElementById("sourceLink").addEventListener("click", ()=>{
+            shell.openExternal("https://github.com/aandrew-me/ytDownloader")
+        })
+    </script>
+</body>
+
+</html>

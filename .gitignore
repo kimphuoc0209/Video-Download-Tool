@@ -1,0 +1,9 @@
+node_modules
+release
+package-lock.json
+test.js
+.*
+!/.gitignore
+todo.txt
+ffmpeg
+ffmpeg.exe
