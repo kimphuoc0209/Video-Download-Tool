@@ -1,119 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <header ></header>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YtDownloader</title>
-    <link rel="stylesheet" href="../assets/css/index.css">
+  <head>
+    <header></header>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Downloader</title>
+    <link rel="stylesheet" href="../assets/css/index.css" />
     <script src="../src/renderer.js" defer></script>
     <script src="../src/index.js" defer></script>
+  </head>
 
-</head>
-
-<div id="popupBox">
+  <div id="popupBox">
     <div id="popup">
-        <p>yt-dlp is being downloaded.</p>
-        <svg id="popupSvg" version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
-            enable-background="new 0 0 0 0" xml:space="preserve">
-            <circle fill="rgb(84, 171, 222)" stroke="none" cx="6" cy="50" r="6">
-                <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1" />
-            </circle>
-            <circle fill="rgb(84, 171, 222)" stroke="none" cx="26" cy="50" r="6">
-                <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2" />
-            </circle>
-            <circle fill="rgb(84, 171, 222)" stroke="none" cx="46" cy="50" r="6">
-                <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3" />
-            </circle>
-        </svg>
+      <p>yt-dlp is being downloaded.</p>
+      <svg
+        id="popupSvg"
+        version="1.1"
+        id="L4"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 100 100"
+        enable-background="new 0 0 0 0"
+        xml:space="preserve"
+      >
+        <circle fill="rgb(84, 171, 222)" stroke="none" cx="6" cy="50" r="6">
+          <animate
+            attributeName="opacity"
+            dur="1s"
+            values="0;1;0"
+            repeatCount="indefinite"
+            begin="0.1"
+          />
+        </circle>
+        <circle fill="rgb(84, 171, 222)" stroke="none" cx="26" cy="50" r="6">
+          <animate
+            attributeName="opacity"
+            dur="1s"
+            values="0;1;0"
+            repeatCount="indefinite"
+            begin="0.2"
+          />
+        </circle>
+        <circle fill="rgb(84, 171, 222)" stroke="none" cx="46" cy="50" r="6">
+          <animate
+            attributeName="opacity"
+            dur="1s"
+            values="0;1;0"
+            repeatCount="indefinite"
+            begin="0.3"
+          />
+        </circle>
+      </svg>
     </div>
-</div>
+  </div>
 
-<body>
-
+  <body>
     <!-- Theme toggle -->
     <div id="themeToggle" onclick="toggle()">
-        <div id="themeToggleInside"></div>
+      <div id="themeToggleInside"></div>
     </div>
 
     <!-- Menu icon -->
-    <img src="../assets/images/menu.png" alt="menu" id="menuIcon">
+    <img src="../assets/images/menu.png" alt="menu" id="menuIcon" />
 
     <!-- Menu -->
     <div id="menu">
-        <a id="preferenceWin" class="menuItem">Preferences</a>
-        <a id="aboutWin" class="menuItem">About</a>
+      <a id="preferenceWin" class="menuItem">Preferences</a>
+      <a id="aboutWin" class="menuItem">About</a>
     </div>
 
-    <button id="pasteUrl" class="submitBtn">Click to paste video URL or ID [Ctrl + V]</button>
+    <button id="pasteUrl" class="submitBtn">
+      Click to paste video URL or ID [Ctrl + V]
+    </button>
 
     <div id="loadingWrapper">
-        <span>Processing </span>
-        <svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-            y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-            <circle fill="rgb(84, 171, 222)" stroke="none" cx="6" cy="50" r="6">
-                <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1" />
-            </circle>
-            <circle fill="rgb(84, 171, 222)" stroke="none" cx="26" cy="50" r="6">
-                <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2" />
-            </circle>
-            <circle fill="rgb(84, 171, 222)" stroke="none" cx="46" cy="50" r="6">
-                <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3" />
-            </circle>
-        </svg>
+      <span>Processing </span>
+      <svg
+        version="1.1"
+        id="L4"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 100 100"
+        enable-background="new 0 0 0 0"
+        xml:space="preserve"
+      >
+        <circle fill="rgb(84, 171, 222)" stroke="none" cx="6" cy="50" r="6">
+          <animate
+            attributeName="opacity"
+            dur="1s"
+            values="0;1;0"
+            repeatCount="indefinite"
+            begin="0.1"
+          />
+        </circle>
+        <circle fill="rgb(84, 171, 222)" stroke="none" cx="26" cy="50" r="6">
+          <animate
+            attributeName="opacity"
+            dur="1s"
+            values="0;1;0"
+            repeatCount="indefinite"
+            begin="0.2"
+          />
+        </circle>
+        <circle fill="rgb(84, 171, 222)" stroke="none" cx="46" cy="50" r="6">
+          <animate
+            attributeName="opacity"
+            dur="1s"
+            values="0;1;0"
+            repeatCount="indefinite"
+            begin="0.3"
+          />
+        </circle>
+      </svg>
     </div>
     <p id="incorrectMsg"></p>
 
     <div id="hidden">
-        <img src="../assets/images/close.png" alt="close" id="closeHidden">
-        <div id="btnContainer">
-            <button class="toggleBtn" id="videoToggle">Video</button>
-            <button class="toggleBtn" id="audioToggle">Audio</button>
-        </div>
-        <p id="title">Title: </p>
+      <img src="../assets/images/close.png" alt="close" id="closeHidden" />
+      <div id="btnContainer">
+        <button class="toggleBtn" id="videoToggle">Video</button>
+        <button class="toggleBtn" id="audioToggle">Audio</button>
+      </div>
+      <p id="title">Title:</p>
 
-        <div id="videoList">
-            <label>Select Format - </label>
-            <select id="videoFormatSelect">
-            </select>
-            <br>
-            <input type="hidden" name="url" class="url" id="url">
-            <button class="submitBtn" id="videoDownload">Download</button>
-            <button id="advancedToggle" onClick ="advancedToggle()">Advanced</button>
-        </div>
+      <div id="videoList">
+        <label>Select Format - </label>
+        <select id="videoFormatSelect"></select>
+        <br />
+        <input type="hidden" name="url" class="url" id="url" />
+        <button class="submitBtn" id="videoDownload">Download</button>
+        <button id="advancedToggle" onClick="advancedToggle()">Advanced</button>
+      </div>
 
-        <div id="audioList">
-            <label>Select Format - </label>
-            <select id="audioFormatSelect">
-            </select>
-            <br>
-            <input type="hidden" name="url" class="url">
-            <button class="submitBtn" id="audioDownload">Download</button>
-            <button id="advancedToggle" onClick ="advancedToggle()">Advanced</button>
+      <div id="audioList">
+        <label>Select Format - </label>
+        <select id="audioFormatSelect"></select>
+        <br />
+        <input type="hidden" name="url" class="url" />
+        <button class="submitBtn" id="audioDownload">Download</button>
+        <button id="advancedToggle" onClick="advancedToggle()">Advanced</button>
+      </div>
 
-        </div>
-
-        <div id="advanced">
-            <p>Download particular time-range</p>
-            <label>Start</label>
-            <input type="text" id="startTime" class="time" placeholder="00:00" title="If kept empty, it will start from the beginning">
-            :
-            <input type="text" id="endTime" class="time" placeholder="10:00" title="If kept empty, it will be downloaded to the end.">
-            <label>End</label>
-
-        </div>
-
+      <div id="advanced">
+        <p>Download particular time-range</p>
+        <label>Start</label>
+        <input
+          type="text"
+          id="startTime"
+          class="time"
+          placeholder="00:00"
+          title="If kept empty, it will start from the beginning"
+        />
+        :
+        <input
+          type="text"
+          id="endTime"
+          class="time"
+          placeholder="10:00"
+          title="If kept empty, it will be downloaded to the end."
+        />
+        <label>End</label>
+      </div>
     </div>
 
-    <br><br><br><br>
+    <br /><br /><br /><br />
 
     <!-- Downloads list -->
-    <div id="list">
-    </div>
-
-</body>
-
+    <div id="list"></div>
+  </body>
 </html>
